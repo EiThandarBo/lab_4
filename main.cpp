@@ -1,27 +1,26 @@
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <cstring>
 using namespace std;
 
 int main() {
-    cout<<"Enter a word: ";
-    int size=10000;
-    char* word=new char[size];
-    cin.getline(word, size);
-    string strWord(word);
-    bool palindrome=true;
-    for(int i=0, j=strWord.length()-1; i<j; i++, j--) {
-        if(strWord[i] != strWord[j]) {
+    //part 1: using dynamic array to check palindrome
+    cout << "Part1; Enter a word: ";
+    const int size = 10000;//for maximum size of the word
+    char* word1 = new char[size];//dynamic array
+    cin.getline(word1, size);
+    int length = strlen(word1);
+    bool palindrome = true;// for palindrome check
+    for (int i = 0; i<= length / 2; i++, length--) {//checking palindrome
+        if (word1[i] != word1[length - 1]) {
             palindrome = false;
             break;
         }
     }
-    delete[] word;
-    if(palindrome) {
-        cout<<"The word is a palindrome."<<endl;
-    } else {
-        cout<<"The word is not a palindrome."<<endl;
+    if(palindrome){//output result
+        cout << "The word is a palindrome." << endl;
+    }else{
+        cout << "The word is not a palindrome." << endl;
     }
-    
-return 0;
-
+    delete[] word1;
+    return 0;
 }
